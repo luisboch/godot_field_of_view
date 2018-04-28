@@ -1,3 +1,8 @@
 .import/*
 icon.png*
 *.import
+export_presets.cfg
+default_env.tres
+project.godot
+default_env.tres
+export_presets.cfg
