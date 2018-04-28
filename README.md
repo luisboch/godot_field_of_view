@@ -1,4 +1,4 @@
-# godot_field_of_view
+# Godot Field Of View
 Godot script that allow use of Field of View in (currently) 2d game. 
 
 <b>Features</b>
