@@ -10,7 +10,7 @@ Godot script that allow use of Field of View in (currently) 2d game.
 </ul>
 
 <b>How to install</b>
-<p>Can be installed from <i>Assetlib</i></p>
+<p>Can be installed from <i><a href="https://godotengine.org/asset-library/asset/674">Assetlib</a></i></p>
 
 <b>How to use</b>
 <ul>
