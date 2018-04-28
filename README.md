@@ -21,7 +21,7 @@ Godot script that allow use of Field of View in (currently) 2d game.
 </ul>
 <b>Configurations</b>
 <ul>
-  <li><b>View Detail:</b>Int, Indicate the number of rays created to check the Fov area, greater value will be more precise with hight cost. Check and test to</li>
+  <li><b>View Detail:</b>Int, Indicate the number of rays created to check the Fov area, greater value will be more precise with hight cost. Check and test to discover good vale</li>
   <li><b>Field of View:</b> In degrees, configure the view angle</li>
   <li><b>Radius Warn:</b> Float, radius to configure warn area</li>
   <li><b>Radius Danger:</b> Float, radius to configure danger area, must be lower than <i>Radius Warn</i></li>
