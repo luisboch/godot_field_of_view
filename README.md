@@ -19,7 +19,21 @@ Godot script that allow use of Field of View in (currently) 2d game.
   <li>Configure it</li>
   <li>From Character node read "in_danger_area" and "in_warn_area" properties to get the visible nodes</li>
 </ul>
-
+<b>Configurations</b>
+<ul>
+  <li><b>View Detail:</b>Int, Indicate the number of rays created to check the Fov area, greater value will be more precise with hight cost. Check and test to</li>
+  <li><b>Field of View:</b> In degrees, configure the view angle</li>
+  <li><b>Radius Warn:</b> Float, radius to configure warn area</li>
+  <li><b>Radius Danger:</b> Float, radius to configure danger area, must be lower than <i>Radius Warn</i></li>
+  <li><b>Show circle:</b> Bool, use to debug the Warn area</li>
+   <li><b>Show Fov:</b> Bool, use to view the rays created</li>
+  <li><b>Show Target line:</b> Bool, draw line to target?</li>
+  <li><b>Circle Color:</b> Color, when <i>Show circle</i> is true, this define the color used to draw</li>
+  <li><b>Fov Color:</b> Color, when <i>Show Fov</i> is true, this define the color used to draw rays</li>
+  <li><b>Fov Warn Color:</b> Color, when <i>Show Fov</i> is true, this define the color used to draw ray to target when is "warn" state</li>
+  <li><b>Fov Danger Color:</b> Color, when <i>Show Fov</i> is true, this define the color used to draw ray to target when is "danger" state</li>
+</ul>
+  
 <b>Current state</b>
 <img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/print_1.jpg" />
 <br />
@@ -36,3 +50,9 @@ Godot script that allow use of Field of View in (currently) 2d game.
 <img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/print_7.jpg" />
 <br />
 <img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/print_8.jpg" />
+
+<b>Variables</b>
+<br />
+<img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/variables.jpg" />
+
+
