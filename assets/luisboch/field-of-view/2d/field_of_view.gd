@@ -1,20 +1,22 @@
+tool
 extends Node2D
 
-export var field_of_view = 60
+export var field_of_view = 60 setget _set_field_of_view
 export var radius_warn = 500
 export var radius_danger = 200
 
-export var show_circle = false
-export var show_fov = true
+export var show_circle = false setget _set_show_circle
+export var show_fov = true setget _set_show_fov
 export var show_target_line = true
 
-export var circle_color = Color("#9f185c0b")
+export var warn_circle_color = Color("#9f185c0b") setget _set_warn_circle_color
+export var danger_circle_color = Color("#9f185c0b") setget _set_danger_circle_color
 
-export var fov_color = Color("#b23d7f0b")
-export var fov_warn_color = Color("#b1eedf0b")
-export var fov_danger_color = Color("#9dfb320b")
+export var fov_color = Color("#b23d7f0b") setget _set_fov_color
+export var fov_warn_color = Color("#b1eedf0b") setget _set_fov_warn_color
+export var fov_danger_color = Color("#9dfb320b") setget _set_fov_danger_color
 
-export var view_detail = 60
+export var view_detail = 60  setget _set_view_detail
 
 export var enemy_groups = ["Enemy"]
 
@@ -23,22 +25,17 @@ var in_warn_area = []
 
 # Buffer to target points
 var points_arc = []
-var is_update = false
-func _ready():
-
-	pass
 
 func _process(delta):
-	is_update = true
 	check_view()
 	update()
-	pass
 
 func _draw():
 	if show_circle:
-		draw_circle(get_position(), radius_warn, circle_color)
+		draw_circle(get_position(), radius_warn, warn_circle_color)
+		draw_circle(get_position(), radius_danger, danger_circle_color)
 	
-	if show_fov && is_update:
+	if show_fov:
 		draw_circle_arc()
 
 func draw_circle_arc():
@@ -60,6 +57,10 @@ func check_view():
 	points_arc = []
 	in_danger_area = []
 	in_warn_area = []
+
+	if not get_world_2d():
+		## Not available (maybe it is editor only)
+		return;
 
 	var space_state = get_world_2d().direct_space_state
 
@@ -116,4 +117,44 @@ func check_view():
 		else :
 			points_arc.append({"pos": point, "level": 0})
 
-	#print(points_arc.size())
+func _set_field_of_view(val):
+	field_of_view = val
+	update_view()
+	
+func _set_show_circle(val):
+	show_circle = val
+	update_view()
+	
+func _set_show_fov(val):
+	show_fov = val
+	update_view()
+	
+func _set_warn_circle_color(val):
+	warn_circle_color = val
+	update_view()
+	
+func _set_danger_circle_color(val):
+	danger_circle_color = val
+	update_view()
+
+func _set_fov_color(val):
+	fov_color = val
+	update_view()
+	
+func _set_fov_warn_color(val):
+	fov_warn_color = val
+	update_view()
+	
+func _set_fov_danger_color(val):
+	fov_danger_color = val
+	update_view()
+
+func _set_view_detail(val):
+	view_detail = val
+	update_view()
+
+func update_view():
+	if Engine.is_editor_hint():
+		check_view()
+	update()
+	

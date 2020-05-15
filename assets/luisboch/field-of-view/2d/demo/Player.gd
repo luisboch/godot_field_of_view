@@ -10,6 +10,7 @@ export (NodePath) var warn_text_path
 onready var danger_txt = get_node(danger_text_path)
 onready var warn_txt = get_node(warn_text_path)
 
+onready var fov_node = get_node("field_of_view")
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -20,10 +21,11 @@ func _ready():
 	pass
 
 func check_fov():
-	if danger_txt:
-		danger_txt.text="Danger: "+str($field_of_view.in_danger_area)
-	if warn_txt:
-		warn_txt.text="Warn: "+str($field_of_view.in_warn_area)
+	if fov_node:
+		if danger_txt:
+			danger_txt.text="Danger: "+str(fov_node.in_danger_area)
+		if warn_txt:
+			warn_txt.text="Warn: "+str(fov_node.in_warn_area)
 
 func _process(delta):
 	check_fov()
@@ -36,21 +38,21 @@ func _process(delta):
 	move_control = Vector2()
 
 	moving = false
-	if Input.is_key_pressed(KEY_A):
-		move_control.x = 1
-		moving = true
-	elif Input.is_key_pressed(KEY_D):
+	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left"):
 		move_control.x = -1
 		moving = true
-	
-	if Input.is_key_pressed(KEY_W):
-		move_control.y = 1
+	elif Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right"):
+		move_control.x = 1
 		moving = true
-	elif  Input.is_key_pressed(KEY_S): 
+	
+	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up"):
 		move_control.y = -1
 		moving = true
+	elif  Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down"): 
+		move_control.y = 1
+		moving = true
 	
-	vel = (move_control.normalized() * speed).rotated(transform.get_rotation())
+	vel = (move_control.normalized() * speed)
 	
 	vel = move_and_slide(vel, Vector2())
 

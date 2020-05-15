@@ -1,0 +1,249 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/img/block-blue.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/SecCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/Block.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11.7552, 11.9218 )
+
+[node name="Game" type="Node"]
+
+[node name="Player" type="KinematicBody2D" parent="." groups=[
+"Player",
+]]
+position = Vector2( 573.248, 577.546 )
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+danger_text_path = NodePath("../CanvasLayer/Danger")
+warn_text_path = NodePath("../CanvasLayer/Warn")
+
+[node name="Player" type="Sprite" parent="Player"]
+position = Vector2( -0.343942, -1.19024 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2( 4, 4 )
+shape = SubResource( 1 )
+
+[node name="CameraD2" type="Camera2D" parent="Player"]
+position = Vector2( 0.445007, 5.39999 )
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 0 )
+
+[node name="Block44" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 864, 0 )
+
+[node name="Block22" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 96 )
+
+[node name="Block23" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 192 )
+
+[node name="Block24" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 288 )
+
+[node name="Block25" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 384 )
+
+[node name="Block26" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 480 )
+
+[node name="Block58" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 768, 96 )
+
+[node name="Block57" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 768, 192 )
+
+[node name="Block59" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 672, 288 )
+
+[node name="Block60" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1250, 384 )
+
+[node name="Block61" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1250, 480 )
+
+[node name="Block62" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1250, 576 )
+
+[node name="Block56" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 768, 288 )
+
+[node name="Block55" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 768, 384 )
+
+[node name="Block54" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 768, 480 )
+
+[node name="Block27" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 576 )
+
+[node name="Block28" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 672 )
+
+[node name="Block35" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 97 )
+
+[node name="Block34" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 193 )
+
+[node name="Block33" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 289 )
+
+[node name="Block32" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 385 )
+
+[node name="Block31" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 481 )
+
+[node name="Block30" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 577 )
+
+[node name="Block29" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1632, 673 )
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, 0 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 193, 0 )
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 289, 0 )
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 385, 0 )
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 481, 0 )
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 577, 0 )
+
+[node name="Block11" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 673, 0 )
+
+[node name="Block12" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 769, 0 )
+
+[node name="Block43" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 960, 0 )
+
+[node name="Block42" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1057, 0 )
+
+[node name="Block41" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1153, 0 )
+
+[node name="Block40" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1249, 0 )
+
+[node name="Block39" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1345, 0 )
+
+[node name="Block38" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1441, 0 )
+
+[node name="Block37" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1537, 0 )
+
+[node name="Block36" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1633, 0 )
+
+[node name="Block21" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 768 )
+
+[node name="Block20" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, 768 )
+
+[node name="Block19" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 193, 768 )
+
+[node name="Block18" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 289, 768 )
+
+[node name="Block17" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 385, 768 )
+
+[node name="Block16" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 481, 768 )
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 577, 768 )
+
+[node name="Block14" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 673, 768 )
+
+[node name="Block13" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 769, 768 )
+
+[node name="Block53" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 864, 768 )
+
+[node name="Block52" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 960, 768 )
+
+[node name="Block51" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1057, 768 )
+
+[node name="Block50" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1153, 768 )
+
+[node name="Block49" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1249, 768 )
+
+[node name="Block48" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1345, 768 )
+
+[node name="Block47" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1441, 768 )
+
+[node name="Block46" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1537, 768 )
+
+[node name="Block45" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1633, 768 )
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Camera1" parent="Cameras" instance=ExtResource( 3 )]
+position = Vector2( 701, 67 )
+rotation = 0.831315
+show_circle = false
+
+[node name="Camera2" parent="Cameras" instance=ExtResource( 3 )]
+position = Vector2( 1551.8, 695.602 )
+rotation = -3.93184
+fov = 98
+show_circle = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Warn" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 15.0
+margin_top = 17.0
+margin_right = 915.0
+margin_bottom = 57.0
+text = "Warn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 15.0
+margin_top = 77.0
+margin_right = 915.0
+margin_bottom = 117.0
+text = "Danger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
