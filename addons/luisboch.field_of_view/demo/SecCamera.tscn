@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/luisboch.field_of_view/demo/SecCamera.gd" type="Script" id=1]
+[ext_resource path="res://addons/luisboch.field_of_view/field_of_view.gd" type="Script" id=2]
+
+[node name="SecCamera" type="Node2D"]
+rotation = 0.683087
+script = ExtResource( 1 )
+size = Vector2( 20, 20 )
+
+[node name="FOV" type="Node2D" parent="."]
+script = ExtResource( 2 )
+show_circle = true
+target_groups = [ "Player" ]
+frequency = 0.1
+[connection signal="target_enter" from="FOV" to="." method="_on_FOV_target_enter"]
+[connection signal="target_exit" from="FOV" to="." method="_on_FOV_target_exit"]

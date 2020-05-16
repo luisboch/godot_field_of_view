@@ -1,17 +1,19 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/img/block-white.jpg" type="Texture" id=1]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-green.jpg" type="Texture" id=1]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40.8181, 41.4788 )
 
-[node name="Enemy1" type="KinematicBody2D" groups=[
+[node name="Enemy2" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 
-editor/display_folded = true
 position = Vector2( 409.473, 151.002 )
 input_pickable = false
 collision_layer = 1

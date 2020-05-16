@@ -27,7 +27,7 @@ func check_fov():
 		if warn_txt:
 			warn_txt.text="Warn: "+str(fov_node.in_warn_area)
 
-func _process(delta):
+func _physics_process(delta):
 	check_fov()
 	var pos = get_position()
 	var dir = (get_global_mouse_position() - pos).normalized()

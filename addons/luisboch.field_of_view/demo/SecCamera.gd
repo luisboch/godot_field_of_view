@@ -7,13 +7,17 @@ export(Color) var color_0 = Color.blue setget set_color_0
 export(Color) var color_1 = Color.yellow setget set_color_1
 export(Color) var color_2 = Color.red setget set_color_2
 export(int) var fov = 60 setget _set_fov
+export(int) var view_dist = 500 setget _set_view_distance
 export var show_circle = true setget _set_show_circle
-
 export (Vector2) var size = Vector2(96.0, 96.0) setget _set_size;
 
 func _set_fov(val):
 	fov = val
 	$FOV.field_of_view = val
+	
+func _set_view_distance(val):
+	view_dist = val
+	$FOV.warn_distance = val 
 	
 func _set_show_circle(val):
 	show_circle = val
@@ -69,3 +73,11 @@ func get_color():
 		return color_1;
 		
 	return color_2
+
+
+func _on_FOV_target_enter(obj):
+	print("Enter "+str(obj));
+
+
+func _on_FOV_target_exit(obj):
+	print("Exit "+str(obj));

@@ -1,8 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/luisboch/field-of-view/2d/field_of_view.gd" type="Script" id=2]
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/img/block-blue.jpg" type="Texture" id=3]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
+[ext_resource path="res://addons/luisboch.field_of_view/field_of_view.gd" type="Script" id=2]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-blue.jpg" type="Texture" id=3]
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.7552, 11.9218 )

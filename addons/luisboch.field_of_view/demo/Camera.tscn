@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/img/block-blue.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/SecCamera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/luisboch/field-of-view/2d/demo/Block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-blue.jpg" type="Texture" id=2]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/SecCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/Block.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.7552, 11.9218 )
@@ -34,7 +34,12 @@ current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
-[node name="Blocks" type="Node" parent="."]
+[node name="Blocks" type="Node2D" parent="."]
+position = Vector2( -3.332, -17.6914 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 0, 0 )
@@ -213,17 +218,21 @@ position = Vector2( 1537, 768 )
 [node name="Block45" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 1633, 768 )
 
-[node name="Cameras" type="Node" parent="."]
+[node name="Cameras" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera1" parent="Cameras" instance=ExtResource( 3 )]
-position = Vector2( 701, 67 )
+position = Vector2( 702.612, 41.6116 )
 rotation = 0.831315
+fov = 100
+view_dist = 936
 show_circle = false
 
 [node name="Camera2" parent="Cameras" instance=ExtResource( 3 )]
-position = Vector2( 1551.8, 695.602 )
-rotation = -3.93184
-fov = 98
+position = Vector2( 1567.35, 691.458 )
+rotation = 2.35135
 show_circle = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -235,15 +244,16 @@ margin_right = 915.0
 margin_bottom = 57.0
 text = "Warn"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Danger" type="RichTextLabel" parent="CanvasLayer"]
-margin_left = 15.0
-margin_top = 77.0
-margin_right = 915.0
-margin_bottom = 117.0
+margin_top = 96.0
+margin_right = 900.0
+margin_bottom = 136.0
 text = "Danger"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
