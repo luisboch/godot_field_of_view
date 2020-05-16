@@ -1,10 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
-[ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-blue.jpg" type="Texture" id=2]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/SecCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/SecuritySystem.gd" type="Script" id=5]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/block-blue.jpg-51949dba364c270d352fca3037067dfe.stex"
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.7552, 11.9218 )
@@ -22,7 +25,7 @@ warn_text_path = NodePath("../CanvasLayer/Warn")
 
 [node name="Player" type="Sprite" parent="Player"]
 position = Vector2( -0.343942, -1.19024 )
-texture = ExtResource( 2 )
+texture = SubResource( 2 )
 offset = Vector2( 0, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]

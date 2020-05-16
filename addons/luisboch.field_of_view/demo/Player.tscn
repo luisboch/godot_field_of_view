@@ -2,10 +2,10 @@
 
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
 [ext_resource path="res://addons/luisboch.field_of_view/field_of_view.gd" type="Script" id=2]
-[ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-blue.jpg" type="Texture" id=3]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/draw.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.7552, 11.9218 )
+extents = Vector2( 48, 48 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -21,11 +21,9 @@ fov_color = Color( 0.239216, 0.498039, 0.0431373, 0.698039 )
 fov_warn_color = Color( 0.933333, 0.87451, 0.0431373, 0.694118 )
 fov_danger_color = Color( 0.984314, 0.196078, 0.0431373, 0.615686 )
 
-[node name="Player" type="Sprite" parent="."]
-position = Vector2( -0.343942, -1.19024 )
-texture = ExtResource( 3 )
-offset = Vector2( 0, 0.5 )
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource( 3 )
+size = Vector2( 96, 96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 4, 4 )
 shape = SubResource( 1 )
