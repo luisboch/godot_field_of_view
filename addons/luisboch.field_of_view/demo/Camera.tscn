@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/img/block-blue.jpg" type="Texture" id=2]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/SecCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/luisboch.field_of_view/demo/SecuritySystem.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.7552, 11.9218 )
@@ -219,9 +220,12 @@ position = Vector2( 1537, 768 )
 position = Vector2( 1633, 768 )
 
 [node name="Cameras" type="Node2D" parent="."]
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+danger_text_path = NodePath("../CanvasLayer/Danger")
+warn_text_path = NodePath("../CanvasLayer/Warn")
 
 [node name="Camera1" parent="Cameras" instance=ExtResource( 3 )]
 position = Vector2( 702.612, 41.6116 )
@@ -238,22 +242,21 @@ show_circle = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Warn" type="RichTextLabel" parent="CanvasLayer"]
-margin_left = 15.0
-margin_top = 17.0
-margin_right = 915.0
-margin_bottom = 57.0
+margin_left = 20.0
+margin_top = 30.0
+margin_right = 900.0
+margin_bottom = 68.0
 text = "Warn"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Danger" type="RichTextLabel" parent="CanvasLayer"]
-margin_top = 96.0
+margin_left = 20.0
+margin_top = 90.0
 margin_right = 900.0
-margin_bottom = 136.0
+margin_bottom = 129.198
 text = "Danger"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }

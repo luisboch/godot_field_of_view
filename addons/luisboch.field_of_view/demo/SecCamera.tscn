@@ -12,6 +12,6 @@ size = Vector2( 20, 20 )
 script = ExtResource( 2 )
 show_circle = true
 target_groups = [ "Player" ]
-frequency = 0.1
+frequency = 0.2
 [connection signal="target_enter" from="FOV" to="." method="_on_FOV_target_enter"]
 [connection signal="target_exit" from="FOV" to="." method="_on_FOV_target_exit"]

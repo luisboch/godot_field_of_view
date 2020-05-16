@@ -60,13 +60,16 @@ func _draw():
 		draw_fov()
 
 func draw_fov():
+	var color 
+	if not in_danger_area.empty():
+		color = fov_danger_color
+	elif not in_warn_area.empty():
+		color = fov_warn_color
+	else:
+		color = fov_color
+		
 	for aux in points_arc:
-		if aux.level == 1 && show_target_line:
-				draw_line(get_position(), aux.pos , fov_warn_color)
-		elif aux.level == 2 && show_target_line:
-			draw_line(get_position(), aux.pos , fov_danger_color, 3)
-		else:
-				draw_line(get_position(), aux.pos , fov_color)
+		draw_line(get_position(), aux.pos , color)
 
 func deg_to_vector(deg):
 	return Vector2( cos(deg2rad(deg)), sin(deg2rad(deg)) )

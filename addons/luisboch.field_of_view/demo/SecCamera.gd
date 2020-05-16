@@ -18,6 +18,7 @@ func _set_fov(val):
 func _set_view_distance(val):
 	view_dist = val
 	$FOV.warn_distance = val 
+	$FOV.danger_distance = val * 0.6
 	
 func _set_show_circle(val):
 	show_circle = val
@@ -81,3 +82,13 @@ func _on_FOV_target_enter(obj):
 
 func _on_FOV_target_exit(obj):
 	print("Exit "+str(obj));
+
+
+func get_danger():
+	return $FOV.in_danger_area
+	
+func get_warn():
+	return $FOV.in_warn_area
+	
+	
+	
