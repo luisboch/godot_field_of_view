@@ -18,7 +18,7 @@ Can be installed from asset lib (https://godotengine.org/asset-library/asset/210
 
 * Enable plugin under project settings
 * Add Field of View node
-* Configure it
+* Configure it (And add target groups to track, without it, plugin will not work as expected!)
 * From Character node read "in_danger_area" and "in_warn_area" properties to get the visible nodes, or,
 * Use events "target_enter" or "target_exit" to work;
 
@@ -36,6 +36,7 @@ Can be installed from asset lib (https://godotengine.org/asset-library/asset/210
 * **Fov Warn Color:** Color, when *Show Fov* is true, this define the color used to draw ray to target when is "warn" state
 * **Fov Danger Color:** Color, when  *Show Fov* is true, this define the color used to draw ray to target when is "danger" state
 * **Frequency:** Float, time to update view area, lower will update fast with cpu cost, default value is 0.5
+* **Target Groups** Array groups to track, required at least one.
   
 ## Current state
 <img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/print_1.jpg" />
