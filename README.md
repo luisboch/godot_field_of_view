@@ -54,8 +54,16 @@ Can be installed from asset lib (https://godotengine.org/asset-library/asset/210
 <br />
 <img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/print_8.jpg" />
 
-<b>Variables** 
-<br />
-<img src="https://github.com/luisboch/godot_field_of_view/blob/images/assets/luisboch/field-of-view/2d/demo/print/variables.jpg" />
+## Previews:
 
+Preview 1:
+![](https://raw.githubusercontent.com/luisboch/godot_field_of_view/images/preview1.gif)
+Preview 2:
+![](https://raw.githubusercontent.com/luisboch/godot_field_of_view/images/preview2.gif)
+Preview 3:
+![](https://raw.githubusercontent.com/luisboch/godot_field_of_view/images/preview3.gif)
+Preview 4:
+![](https://raw.githubusercontent.com/luisboch/godot_field_of_view/images/preview4.gif)
 
+## How-To from zero
+https://youtu.be/tpR-9X6G8hk
