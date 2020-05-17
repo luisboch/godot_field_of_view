@@ -16,13 +16,15 @@ script = ExtResource( 1 )
 [node name="field_of_view" type="Node2D" parent="."]
 script = ExtResource( 2 )
 warn_distance = 700
-danger_distance = 300
-fov_color = Color( 0.239216, 0.498039, 0.0431373, 0.698039 )
-fov_warn_color = Color( 0.933333, 0.87451, 0.0431373, 0.694118 )
+danger_distance = 306
+fov_color = Color( 0.384314, 0.592157, 0.223529, 0.698039 )
+fov_warn_color = Color( 0.392157, 0.380392, 0.231373, 0.694118 )
 fov_danger_color = Color( 0.984314, 0.196078, 0.0431373, 0.615686 )
+view_detail = 2
 
 [node name="Player" type="Node2D" parent="."]
 script = ExtResource( 3 )
+color = Color( 0, 0, 1, 1 )
 size = Vector2( 96, 96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

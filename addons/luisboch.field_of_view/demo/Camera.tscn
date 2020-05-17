@@ -5,11 +5,11 @@
 [ext_resource path="res://addons/luisboch.field_of_view/demo/Block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/luisboch.field_of_view/demo/SecuritySystem.gd" type="Script" id=5]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/block-blue.jpg-51949dba364c270d352fca3037067dfe.stex"
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11.7552, 11.9218 )
 
 [node name="Game" type="Node"]
@@ -25,12 +25,12 @@ warn_text_path = NodePath("../CanvasLayer/Warn")
 
 [node name="Player" type="Sprite" parent="Player"]
 position = Vector2( -0.343942, -1.19024 )
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 offset = Vector2( 0, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2( 4, 4 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CameraD2" type="Camera2D" parent="Player"]
 position = Vector2( 0.445007, 5.39999 )
@@ -46,7 +46,6 @@ __meta__ = {
 }
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 0, 0 )
 
 [node name="Block44" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 864, 0 )
@@ -232,15 +231,13 @@ warn_text_path = NodePath("../CanvasLayer/Warn")
 
 [node name="Camera1" parent="Cameras" instance=ExtResource( 3 )]
 position = Vector2( 702.612, 41.6116 )
-rotation = 0.831315
+rotation = 2.64445
 fov = 100
 view_dist = 936
-show_circle = false
 
 [node name="Camera2" parent="Cameras" instance=ExtResource( 3 )]
 position = Vector2( 1567.35, 691.458 )
-rotation = 2.35135
-show_circle = false
+rotation = -2.44218
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

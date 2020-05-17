@@ -11,14 +11,6 @@ onready var danger_txt = get_node(danger_text_path)
 onready var warn_txt = get_node(warn_text_path)
 
 onready var fov_node = get_node("field_of_view")
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 
 func check_fov():
 	if fov_node:
@@ -31,7 +23,7 @@ func _physics_process(delta):
 	check_fov()
 	var pos = get_position()
 	var dir = (get_global_mouse_position() - pos).normalized()
-	set_rotation(deg2rad(rad2deg(dir.angle()) - 90))
+	set_rotation(deg2rad(rad2deg(dir.angle())))
 
 	
 	# vel = Vector2()

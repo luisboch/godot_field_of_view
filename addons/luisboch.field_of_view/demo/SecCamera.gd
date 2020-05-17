@@ -8,7 +8,6 @@ export(Color) var color_1 = Color.yellow setget set_color_1
 export(Color) var color_2 = Color.red setget set_color_2
 export(int) var fov = 60 setget _set_fov
 export(int) var view_dist = 500 setget _set_view_distance
-export var show_circle = true setget _set_show_circle
 export (Vector2) var size = Vector2(96.0, 96.0) setget _set_size;
 
 func _set_fov(val):
@@ -20,9 +19,6 @@ func _set_view_distance(val):
 	$FOV.warn_distance = val 
 	$FOV.danger_distance = val * 0.6
 	
-func _set_show_circle(val):
-	show_circle = val
-	$FOV.show_circle = val
 
 func _set_state(val):
 	# listen all state updates, and force this node to redrawn using update when needs.
@@ -52,13 +48,14 @@ func set_color_2(val):
 	update()
 	
 func _process(delta):
-	# Check for changes...
-	if $FOV.in_danger_area.size() > 0:
-		_set_state(2)
-	elif $FOV.in_warn_area.size() > 0:
-		_set_state(1)
-	else:
-		_set_state(0)
+	if not Engine.is_editor_hint():
+		# Check for changes...
+		if $FOV.in_danger_area.size() > 0:
+			_set_state(2)
+		elif $FOV.in_warn_area.size() > 0:
+			_set_state(1)
+		else:
+			_set_state(0)
 
 
 func _draw():

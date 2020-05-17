@@ -5,12 +5,8 @@ export var field_of_view = 60 setget _set_field_of_view
 export var warn_distance = 500 setget _set_warn_distance
 export var danger_distance = 200 setget _set_danger_distance
 
-export var show_circle = false setget _set_show_circle
 export var show_fov = true setget _set_show_fov
 export var show_target_line = true
-
-export var warn_circle_color = Color("#9f185c0b") setget _set_warn_circle_color
-export var danger_circle_color = Color("#9f185c0b") setget _set_danger_circle_color
 
 export var fov_color = Color("#b23d7f0b") setget _set_fov_color
 export var fov_warn_color = Color("#b1eedf0b") setget _set_fov_warn_color
@@ -37,12 +33,13 @@ var start_angle
 var end_angle
 
 func _enter_tree():
-	timer = Timer.new()
-	timer.connect("timeout", self, "check_view")
-	timer.one_shot = false
-	timer.autostart = true
-	call_deferred("setup_timer")
-	call_deferred("_set_frequency", frequency)
+	if not Engine.is_editor_hint():
+		timer = Timer.new()
+		timer.connect("timeout", self, "check_view")
+		timer.one_shot = false
+		timer.autostart = true
+		call_deferred("setup_timer")
+		call_deferred("_set_frequency", frequency)
 	_update_rotation()
 	
 	
@@ -50,12 +47,9 @@ func _enter_tree():
 func setup_timer():
 	add_child(timer)
 	timer.owner = self
+	timer.wait_time = frequency
 	
 func _draw():
-	if show_circle:
-		draw_circle(get_position(), warn_distance, warn_circle_color)
-		draw_circle(get_position(), danger_distance, danger_circle_color)
-	
 	if show_fov:
 		draw_fov()
 
@@ -77,9 +71,11 @@ func deg_to_vector(deg):
 
 func create_draw_points():
 	points_arc = []
-	if start_angle:
-		for i in range(view_detail+1):
-			var cur_angle = start_angle + (i *  (float(field_of_view) / float(view_detail))) + 90
+	var angles = []
+	var step = float(field_of_view) / float(view_detail)
+	if start_angle != null:
+		for i in range(view_detail):
+			var cur_angle = float(start_angle) + (float(i) * float(step)) + (float(step) * 0.5)
 			var point = get_position() + deg_to_vector(cur_angle) * warn_distance
 			points_arc.append({"pos": point, "level": 0})
 	update()
@@ -135,8 +131,10 @@ func check_view():
 				else :
 					in_warn_area.append(result.collider)
 				
-				var tgt_pos = result.collider.get_global_transform().origin
-				points_arc.append({"pos": to_local(tgt_pos), "level": level})
+				if show_target_line:
+					var tgt_pos = result.collider.get_global_transform().origin
+					points_arc.append({"pos": to_local(tgt_pos), "level": level})
+					
 	_update_events(original_objs)
 
 
@@ -153,31 +151,17 @@ func _update_events(original):
 		emit_signal("target_enter", obj)
 
 func _update_rotation():
-	dir_deg = rad2deg(transform.get_rotation())
-	start_angle = dir_deg - (field_of_view * 0.5)
-	end_angle = start_angle + field_of_view
-
+	start_angle = -int(field_of_view * 0.5)
+	end_angle = int(start_angle + field_of_view)
 
 func _set_field_of_view(val):
 	field_of_view = val
-	update_view()
-	
-func _set_show_circle(val):
-	show_circle = val
 	update_view()
 	
 func _set_show_fov(val):
 	show_fov = val
 	update_view()
 	
-func _set_warn_circle_color(val):
-	warn_circle_color = val
-	update_view()
-	
-func _set_danger_circle_color(val):
-	danger_circle_color = val
-	update_view()
-
 func _set_fov_color(val):
 	fov_color = val
 	update_view()
@@ -208,7 +192,6 @@ func update_view():
 func _set_frequency(val):
 	frequency = val
 	if timer:
-		print("updating timer")
 		timer.wait_time = val
 		timer.start(val)
 	
