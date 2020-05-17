@@ -27,8 +27,8 @@ Can be installed from asset lib (https://godotengine.org/asset-library/asset/210
 * **View Detail:** Int, Indicates the number of rays created to check the Fov area, greater value will be more precise with cpu cost.
 * **Field of View:** In degrees, configure the view angle
 * **Warn distance:**  Float, view distance
-* **Danger distance:**  Float, view distance to consider danger, must be lower than  *Radius Warn*  
-* **Show circle:**  Bool, use to debug the Warn area
+* **Danger distance:**  Float, view distance to consider danger, must be lower than  *Warn distance*  
+* **Show circle:**  Bool, use to debug the Warn area (Deprecated)
 * **Show Fov:**  Bool, use to view the rays created
 * **Show Target line:**  Bool, draw line to target?
 * **Circle Color:** Color, when *Show circle* is true, this define the color used to draw
