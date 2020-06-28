@@ -12,7 +12,7 @@ Godot script that allow use of Field of View in (currently) 2d game.
 
 ## How to install
 
-Can be installed from ![asset lib](https://godotengine.org/asset-library/asset/210)
+Can be installed from [asset lib](https://godotengine.org/asset-library/asset/210)
 
 ## How to use
 
@@ -35,6 +35,7 @@ Can be installed from ![asset lib](https://godotengine.org/asset-library/asset/2
 * **Fov Danger Color:** Color, when  *Show Fov* is true, this define the color used to draw rays when is "danger" state
 * **Frequency:** Float, frequency to update view area, lower will update fast with cpu cost, default value is 0.5
 * **Target Groups** Array groups to track, required at least one.
+* **Collision Mask**
   
 ## Current state
 

@@ -16,6 +16,8 @@ export var view_detail = 60  setget _set_view_detail
 
 export var target_groups = ["Enemy"]
 
+export(int, LAYERS_2D_PHYSICS) var collision_mask = 1 setget _set_collision_mask
+
 signal target_enter
 signal target_exit
 
@@ -99,7 +101,7 @@ func check_view():
 		# use global coordinates, not local to node
 		tg_point.level = 0
 		
-		var result = space_state.intersect_ray(get_global_transform().origin, to_global(tg_point.pos), [get_parent()])
+		var result = space_state.intersect_ray(get_global_transform().origin, to_global(tg_point.pos), [get_parent()], collision_mask)
 		
 		if not result: 
 			continue
@@ -185,6 +187,11 @@ func _set_danger_distance(val):
 	danger_distance = val
 	update_view()
 
+
+func _set_collision_mask(val):
+	collision_mask = val
+	update_view()
+	
 func update_view():
 	_update_rotation()
 	create_draw_points()

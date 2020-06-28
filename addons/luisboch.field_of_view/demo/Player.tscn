@@ -13,7 +13,7 @@ extents = Vector2( 48, 48 )
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
 
-[node name="field_of_view" type="Node2D" parent="."]
+[node name="FOV" type="Node2D" parent="."]
 script = ExtResource( 2 )
 warn_distance = 700
 danger_distance = 306
@@ -29,3 +29,5 @@ size = Vector2( 96, 96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
