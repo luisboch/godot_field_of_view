@@ -69,4 +69,4 @@ Can be installed from [asset lib](https://godotengine.org/asset-library/asset/21
 
 A complete how to use this plugin.
 
-[![Youtube vídeo](https://img.youtube.com/vi/tpR-9X6G8hk/0.jpg)](https://www.youtube.com/watch?v=tpR-9X6G8hk)
+[![Youtube vídeo](https://img.youtube.com/vi/zMYUSRGIj7w/0.jpg)](https://youtu.be/zMYUSRGIj7w)
