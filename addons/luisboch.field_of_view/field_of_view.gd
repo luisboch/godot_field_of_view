@@ -43,7 +43,9 @@ func _enter_tree():
 		call_deferred("setup_timer")
 		call_deferred("_set_frequency", frequency)
 	_update_rotation()
-	
+
+func _ready():
+	update_view()
 	
 
 func setup_timer():
@@ -73,6 +75,10 @@ func deg_to_vector(deg):
 
 func create_draw_points():
 	points_arc = []
+	if view_detail <= 0:
+		update()
+		return
+		
 	var angles = []
 	var step = float(field_of_view) / float(view_detail)
 	if start_angle != null:
