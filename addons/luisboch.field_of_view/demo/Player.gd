@@ -10,7 +10,7 @@ export (NodePath) var warn_text_path
 onready var danger_txt = get_node(danger_text_path)
 onready var warn_txt = get_node(warn_text_path)
 
-onready var fov_node = get_node("field_of_view")
+onready var fov_node = get_node("FOV")
 
 func check_fov():
 	if fov_node:
