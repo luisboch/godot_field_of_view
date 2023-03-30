@@ -1,16 +1,16 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var speed = 200
+@export var speed = 200
 var move_control = Vector2()
 var vel = Vector2()
 var moving = false
-export (NodePath) var danger_text_path
-export (NodePath) var warn_text_path
+@export_node_path var danger_text_path
+@export_node_path var warn_text_path
 
-onready var danger_txt = get_node(danger_text_path)
-onready var warn_txt = get_node(warn_text_path)
+@onready var danger_txt = get_node(danger_text_path)
+@onready var warn_txt = get_node(warn_text_path)
 
-onready var fov_node = get_node("FOV")
+@onready var fov_node = get_node("FOV")
 
 func check_fov():
 	if fov_node:
@@ -23,7 +23,7 @@ func _physics_process(delta):
 	check_fov()
 	var pos = get_position()
 	var dir = (get_global_mouse_position() - pos).normalized()
-	set_rotation(deg2rad(rad2deg(dir.angle())))
+	super.look_at(get_global_mouse_position())
 
 	
 	# vel = Vector2()
@@ -44,8 +44,8 @@ func _physics_process(delta):
 		move_control.y = 1
 		moving = true
 	
-	vel = (move_control.normalized() * speed)
+	velocity = (move_control.normalized() * speed)
 	
-	vel = move_and_slide(vel, Vector2())
+	move_and_slide()
 
 

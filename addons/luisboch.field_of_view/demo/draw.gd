@@ -1,23 +1,17 @@
-tool
+@tool
 extends Node2D
 
-export var color = Color.blue setget _set_color
-export var size = Vector2(48.0, 48.0) setget _set_size
-
-
-func _set_color(n_color):
-	# update local var
-	color = n_color
-	
-	# Forces new draw
-	update()
-
-func _set_size(n_size):
-	# update local var
-	size = n_size
-	
-	# Forces new draw
-	update()
+@export var color = Color.BLUE: 
+	set (value):
+		color = value
+		# Forces new draw
+		super.queue_redraw()
+		
+@export var size = Vector2(48.0, 48.0):
+	set(value):
+		size = value
+		# Forces new draw
+		super.queue_redraw()
 	
 func _draw():
 	# Draw filled rectangle, using local position (based on parent is 0.0, 0.0)

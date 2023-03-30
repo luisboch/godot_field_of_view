@@ -1,22 +1,54 @@
-tool
+@tool
 extends Node2D
 
-export var field_of_view = 60 setget _set_field_of_view
-export var warn_distance = 500 setget _set_warn_distance
-export var danger_distance = 200 setget _set_danger_distance
+@export var field_of_view = 60: 
+	set(value):
+		field_of_view = value
+		update_view()
+			
+@export var warn_distance = 500:
+	set(value):
+		warn_distance = value
+		update_view()
+		
+@export var danger_distance = 200:
+	set(value):
+		danger_distance = value
+		update_view()
+		
+@export var show_fov = true:
+	set(value):
+		show_fov = value
+		update_view()
+		
+@export var show_target_line = true
 
-export var show_fov = true setget _set_show_fov
-export var show_target_line = true
+@export var fov_color = Color.GREEN:
+	set(value):
+		fov_color = value
+		update_view()
+		
+@export var fov_warn_color = Color.YELLOW:
+	set(value):
+		fov_warn_color = value
+		update_view()
+		
+@export var fov_danger_color = Color.RED:
+	set(value): 
+		fov_danger_color = value
+		update_view()
 
-export var fov_color = Color("#b23d7f0b") setget _set_fov_color
-export var fov_warn_color = Color("#b1eedf0b") setget _set_fov_warn_color
-export var fov_danger_color = Color("#9dfb320b") setget _set_fov_danger_color
+@export var view_detail = 60:
+	set(value):
+		view_detail = value
+		update_view()
+		
+@export var target_groups = ["Enemy"]
 
-export var view_detail = 60  setget _set_view_detail
-
-export var target_groups = ["Enemy"]
-
-export(int, LAYERS_2D_PHYSICS) var collision_mask = 1 setget _set_collision_mask
+@export_flags_2d_physics var collision_mask = 1:
+	set(value):
+		collision_mask = value
+		update_view()
 
 signal target_enter
 signal target_exit
@@ -27,7 +59,11 @@ var in_warn_area = []
 # Buffer to target points
 var points_arc = []
 
-export var frequency = 0.5 setget _set_frequency
+@export var frequency = 0.5:
+	set(value):
+		frequency = value
+		update_view()
+		
 var timer
 
 var dir_deg
@@ -37,7 +73,7 @@ var end_angle
 func _enter_tree():
 	if not Engine.is_editor_hint():
 		timer = Timer.new()
-		timer.connect("timeout", self, "check_view")
+		timer.connect("timeout", check_view)
 		timer.one_shot = false
 		timer.autostart = true
 		call_deferred("setup_timer")
@@ -59,9 +95,9 @@ func _draw():
 
 func draw_fov():
 	var color 
-	if not in_danger_area.empty():
+	if not in_danger_area.is_empty():
 		color = fov_danger_color
-	elif not in_warn_area.empty():
+	elif not in_warn_area.is_empty():
 		color = fov_warn_color
 	else:
 		color = fov_color
@@ -70,13 +106,13 @@ func draw_fov():
 		draw_line(get_position(), aux.pos , color)
 
 func deg_to_vector(deg):
-	return Vector2( cos(deg2rad(deg)), sin(deg2rad(deg)) )
+	return Vector2( cos(deg_to_rad(deg)), sin(deg_to_rad(deg)) )
 
 
 func create_draw_points():
 	points_arc = []
 	if view_detail <= 0:
-		update()
+		super.queue_redraw()
 		return
 		
 	var angles = []
@@ -86,7 +122,7 @@ func create_draw_points():
 			var cur_angle = float(start_angle) + (float(i) * float(step)) + (float(step) * 0.5)
 			var point = get_position() + deg_to_vector(cur_angle) * warn_distance
 			points_arc.append({"pos": point, "level": 0})
-	update()
+	super.queue_redraw()
 
 func check_view():
 	create_draw_points()
@@ -107,13 +143,16 @@ func check_view():
 		# use global coordinates, not local to node
 		tg_point.level = 0
 		
-		var result = space_state.intersect_ray(get_global_transform().origin, to_global(tg_point.pos), [get_parent()], collision_mask)
+		var result = space_state.intersect_ray(
+			PhysicsRayQueryParameters2D.create(
+				get_global_transform().origin,
+				to_global(tg_point.pos),
+				collision_mask, 
+				[get_parent()]
+			)
+		)
 		
-		if not result: 
-			continue
-			
 		if result:
-			
 			var local_pos = to_local(result.position)
 			var dist = get_position().distance_to(local_pos)
 			var level = 0
@@ -161,42 +200,6 @@ func _update_events(original):
 func _update_rotation():
 	start_angle = -int(field_of_view * 0.5)
 	end_angle = int(start_angle + field_of_view)
-
-func _set_field_of_view(val):
-	field_of_view = val
-	update_view()
-	
-func _set_show_fov(val):
-	show_fov = val
-	update_view()
-	
-func _set_fov_color(val):
-	fov_color = val
-	update_view()
-	
-func _set_fov_warn_color(val):
-	fov_warn_color = val
-	update_view()
-	
-func _set_fov_danger_color(val):
-	fov_danger_color = val
-	update_view()
-
-func _set_view_detail(val):
-	view_detail = val
-	update_view()
-func _set_warn_distance(val):
-	warn_distance = val
-	update_view()
-	
-func _set_danger_distance(val):
-	danger_distance = val
-	update_view()
-
-
-func _set_collision_mask(val):
-	collision_mask = val
-	update_view()
 	
 func update_view():
 	_update_rotation()

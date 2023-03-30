@@ -1,30 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dqf7ldy5ulgcb"]
 
-[ext_resource path="res://addons/luisboch.field_of_view/demo/Player.gd" type="Script" id=1]
-[ext_resource path="res://addons/luisboch.field_of_view/field_of_view.gd" type="Script" id=2]
-[ext_resource path="res://addons/luisboch.field_of_view/demo/draw.gd" type="Script" id=3]
+[ext_resource type="Script" path="res://addons/luisboch.field_of_view/demo/Player.gd" id="1"]
+[ext_resource type="Script" path="res://addons/luisboch.field_of_view/field_of_view.gd" id="2"]
+[ext_resource type="Script" path="res://addons/luisboch.field_of_view/demo/draw.gd" id="3"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48, 48 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(96, 96)
 
-[node name="Player" type="KinematicBody2D" groups=["Player"]]
-collision/safe_margin = 0.001
-script = ExtResource( 1 )
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1")
 
 [node name="FOV" type="Node2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource("2")
 warn_distance = 700
 danger_distance = 306
-fov_color = Color( 0.384314, 0.592157, 0.223529, 0.698039 )
-fov_warn_color = Color( 0.392157, 0.380392, 0.231373, 0.694118 )
-fov_danger_color = Color( 0.984314, 0.196078, 0.0431373, 0.615686 )
 view_detail = 10
 
 [node name="Player" type="Node2D" parent="."]
-script = ExtResource( 3 )
-size = Vector2( 96, 96 )
+script = ExtResource("3")
+color = Color(0.215686, 0.298039, 0.647059, 1)
+size = Vector2(96, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

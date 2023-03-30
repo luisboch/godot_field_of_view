@@ -1,14 +1,16 @@
-tool
+@tool
 extends Node2D
+;
+@export var state = 0: 
+	set(value):
+		state = value
 
-export var state = 0 setget _set_state;
-
-export(Color) var color_0 = Color.blue setget set_color_0
-export(Color) var color_1 = Color.yellow setget set_color_1
-export(Color) var color_2 = Color.red setget set_color_2
-export(int) var fov = 60 setget _set_fov
-export(int) var view_dist = 500 setget _set_view_distance
-export (Vector2) var size = Vector2(96.0, 96.0) setget _set_size;
+@export var color_0 = Color.BLUE: set =  set_color_0
+@export var color_1 = Color.YELLOW: set = set_color_1
+@export var color_2 = Color.RED: set = set_color_2
+@export var fov = 60: set = _set_fov
+@export var view_dist = 500: set = _set_view_distance
+@export var size = Vector2(96.0, 96.0): set = _set_size;
 
 func _set_fov(val):
 	fov = val
@@ -29,23 +31,23 @@ func _set_state(val):
 	
 	# State changed, then we need to draw again.
 	if last != state:
-		update()
+		super.queue_redraw()
 	
 func _set_size(val):
 	size = val
-	update()
+	super.queue_redraw()
 	
 func set_color_0(val):
 	color_0 = val
-	update()
+	super.queue_redraw()
 	
 func set_color_1(val):
 	color_1 = val
-	update()
+	super.queue_redraw()
 	
 func set_color_2(val):
 	color_2 = val
-	update()
+	super.queue_redraw()
 	
 func _process(delta):
 	if not Engine.is_editor_hint():

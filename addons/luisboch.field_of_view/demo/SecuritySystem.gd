@@ -1,10 +1,10 @@
 extends Node2D
 
-export (NodePath) var danger_text_path
-export (NodePath) var warn_text_path
+@export_node_path var danger_text_path
+@export_node_path var warn_text_path
 
-onready var danger_txt = get_node(danger_text_path)
-onready var warn_txt = get_node(warn_text_path)
+@onready var danger_txt = get_node(danger_text_path)
+@onready var warn_txt = get_node(warn_text_path)
 
 var danger_nodes;
 var warn_nodes;
